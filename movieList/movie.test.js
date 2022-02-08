@@ -15,35 +15,61 @@ afterAll(async () => {
     await driver.quit()
 })
 
+//ADD MOVIE
+// test('add a movie', async () => {
+//     const theInput = await driver.findElement(By.xpath('//input'))
 
-test('add a movie', async () => {
-    const theInput = await driver.findElement(By.xpath('//input'))
+//     const searchTerm = 'Tenet'
 
-    const searchTerm = 'Tenet'
+//     await theInput.sendKeys(searchTerm)
 
-    await theInput.sendKeys(searchTerm)
+//     const theButton = await driver.findElement(By.css('button'))
 
-    const theButton = await driver.findElement(By.css('button'))
+//     await theButton.click();
 
-    await theButton.click();
+//     const theResult = await driver.findElement(By.xpath('//li/span')).getText()
+//     expect(theResult).toBe(searchTerm)
+//     await driver.sleep(3000)
 
-    const theResult = await driver.findElement(By.xpath('//li/span')).getText()
+// })
+
+//ADD MOVIE + CROSS OFF A MOVIE
+test('We can add & cross off a movie', async() => {
+    const movieInput = await driver.findElement(By.xpath('//form/input'))
+
+    await movieInput.sendKeys('ET\n') //SENDING ET INTO THE INPUT
+
+    const movieLi = await driver.findElement(By.css('span'));
+    await movieLi.click();
+
+    await driver.sleep(6000)  
+})
+
+//after adding movie and crossing it off new site google opens
+
+test('this is a test', async() => {
+    await driver.navigate().refresh()  //tell the browser to refresh
+    
+    await driver.sleep(2000)
+    await driver.navigate().to('https://ww.google.com') //tell the browser to open a new site after refresh
    
-
+})
 
 //MY PART
-// const deleteBtn = await driver.findElement(By.id('Tenet'))
- const crossOver = await driver.findElement(By.xpath('//*[text()="Tenet"]'))
-await crossOver.click();
+// // const deleteBtn = await driver.findElement(By.id('Tenet'))
+//  const crossOver = await driver.findElement(By.xpath('//*[text()="Tenet"]'))
+// await crossOver.click();
 
-const deleteBtn = await driver.findElement(By.id("Tenet"))
-await deleteBtn.click();
+
+// const addedBack = await driver.findElement(By.id('message'))
+// await addedBack.click();
+
+
+
+// const deleteBtn = await driver.findElement(By.id("Tenet"))
+// await deleteBtn.click();
 
 
 
     
-    expect(theResult).toBe(searchTerm)
-
-    await driver.sleep(3000)
-
-})
+ 
